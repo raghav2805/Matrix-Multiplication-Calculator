@@ -1,0 +1,40 @@
+<% if @error_message %>
+  <h1>Error</h1>
+  <p><%= @error_message %></p>
+<% else %>
+
+<h1>Matrix Multiplication Result</h1>
+
+<p>Matrix A:</p>
+<table>
+  <% @matrix_a.each do |row| %>
+    <tr>
+      <% row.each do |element| %>
+        <td><%= element %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<p>Matrix B:</p>
+<table>
+  <% @matrix_b.each do |row| %>
+    <tr>
+      <% row.each do |element| %>
+        <td><%= element %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<p>Result Matrix:</p>
+<table>
+  <% @result_matrix.each do |row| %>
+    <tr>
+      <% row.each do |element| %>
+        <td><%= element %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+<% end %>

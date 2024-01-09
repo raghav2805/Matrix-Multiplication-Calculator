@@ -1,0 +1,69 @@
+<h1>Matrix Multiplication Calculator</h1>
+<form action="/calculate" method="post">
+  <p>Enter dimensions of matrix A: Rows: <input type="number" name="matrix_a_rows"> Columns: <input type="number" name="matrix_a_cols"></p>
+  <a href="#" onclick="checkMatrixARowsAndColumns()">Matrix A</a>
+  <p>Enter elements of matrix A:</p>
+  <table>
+    <tbody id="matrix_a_elements"></tbody>
+  </table>
+  <p>Enter dimensions of matrix B: Rows: <input type="number" name="matrix_b_rows"> Columns: <input type="number" name="matrix_b_cols"></p>
+  <a href="#" onclick="checkMatrixBRowsAndColumns()">Matrix B</a>
+  <p>Enter elements of matrix B:</p>
+  <table>
+    <tbody id="matrix_b_elements"></tbody>
+  </table>
+  <button type="submit">Calculate</button>
+</form>
+<script>
+
+const matrixAInputs = document.getElementById('matrix_a_elements');
+const matrixBInputs = document.getElementById('matrix_b_elements');
+
+function addRowsAndColumnsA(container, rows, cols) {
+  container.innerHTML = '';
+  for (let i = 0; i < rows; i++) {
+    const row = document.createElement('tr');
+    for (let j = 0; j < cols; j++) {
+      const cell = document.createElement('td');
+      const input = document.createElement('input');
+      input.type = 'number';
+      input.name = `matrix_a[${i}][${j}]`;
+      cell.appendChild(input);
+      row.appendChild(cell);
+    }
+    container.appendChild(row);
+  }
+}
+
+function addRowsAndColumnsB(container, rows, cols) {
+  container.innerHTML = '';
+  for (let i = 0; i < rows; i++) {
+    const row = document.createElement('tr');
+    for (let j = 0; j < cols; j++) {
+      const cell = document.createElement('td');
+      const input = document.createElement('input');
+      input.type = 'number';
+      input.name = `matrix_b[${i}][${j}]`;
+      cell.appendChild(input);
+      row.appendChild(cell);
+    }
+    container.appendChild(row);
+  }
+}
+
+function checkMatrixARowsAndColumns() {
+    const rows = parseInt(document.querySelector('input[name="matrix_a_rows"]').value);
+    const cols = parseInt(document.querySelector('input[name="matrix_a_cols"]').value);
+    if (rows > 0 && cols > 0) {
+        addRowsAndColumnsA(matrixAInputs, rows, cols);
+    }
+}
+
+function checkMatrixBRowsAndColumns() {
+    const rows = parseInt(document.querySelector('input[name="matrix_b_rows"]').value);
+    const cols = parseInt(document.querySelector('input[name="matrix_b_cols"]').value);
+    if (rows > 0 && cols > 0) {
+        addRowsAndColumnsB(matrixBInputs, rows, cols);
+    }
+}
+</script>
